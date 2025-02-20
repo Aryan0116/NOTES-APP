@@ -10,7 +10,7 @@ const userDisplay = document.getElementById('userDisplay');
 const toast = document.getElementById('toast');
 
 // API Configuration
-const API_URL = 'https://notes-app-ni8n.onrender.com'; // Change this to your deployed API URL in production
+const API_URL = 'https://notes-app-ni8n.onrender.com/api'; // Add "/api" to match backend
 
 // State management
 let isLogin = true;

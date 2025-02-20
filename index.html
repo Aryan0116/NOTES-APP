@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotesForge - Your Learning Companion</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Auth Container -->
+    <div class="auth-container" id="authContainer">
+        <div class="auth-card">
+            <h2 id="authTitle">Welcome Back</h2>
+            <p class="auth-subtitle" id="authSubtitle">Enter your credentials to access your notes</p>
+            <form id="authForm" class="auth-form">
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+            <p class="auth-switch">
+                Don't have an account? 
+                <a href="#" id="authToggle">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="app-container hidden" id="appContainer">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">NotesForge</div>
+            <div class="nav-links">
+                <a href="#" class="nav-link" data-page="dashboard">Dashboard</a>
+                <a href="#" class="nav-link" data-page="notes">Notes</a>
+                <a href="#" class="nav-link" data-page="subjects">Subjects</a>
+            </div>
+            <div class="nav-user">
+                <span id="userDisplay"></span>
+                <button class="btn btn-outline" id="signOutBtn">Sign Out</button>
+            </div>
+        </nav>
+
+        <!-- Pages -->
+        <div class="page" id="dashboardPage">
+            <h1>Welcome to Your Dashboard</h1>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <h3>Total Notes</h3>
+                        <i class='bx bx-note'></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalNotes">0</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <h3>Subjects</h3>
+                        <i class='bx bx-book'></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalSubjects">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="recent-notes">
+                <h2>Recent Notes</h2>
+                <div id="recentNotesList" class="notes-grid"></div>
+            </div>
+        </div>
+
+        <div class="page hidden" id="notesPage">
+            <div class="page-header">
+                <h1>My Notes</h1>
+                <button class="btn btn-primary" id="newNoteBtn">New Note</button>
+            </div>
+            <div class="notes-grid" id="notesList"></div>
+        </div>
+
+        <div class="page hidden" id="subjectsPage">
+            <div class="page-header">
+                <h1>Subjects</h1>
+                <button class="btn btn-primary" id="newSubjectBtn">New Subject</button>
+            </div>
+            <div class="subjects-grid" id="subjectsList"></div>
+        </div>
+    </div>
+
+    <!-- New Note Modal -->
+    <div class="modal hidden" id="noteModal">
+        <div class="modal-content">
+            <h2>New Note</h2>
+            <form id="noteForm">
+                <div class="input-group">
+                    <input type="text" id="noteTitle" placeholder="Note Title" required>
+                </div>
+                <div class="input-group">
+                    <select id="noteSubject" required>
+                        <option value="">Select Subject</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <textarea id="noteContent" placeholder="Write your note here..." required></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" id="closeNoteModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Note</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- New Subject Modal -->
+    <div class="modal hidden" id="subjectModal">
+        <div class="modal-content">
+            <h2>New Subject</h2>
+            <form id="subjectForm">
+                <div class="input-group">
+                    <input type="text" id="subjectName" placeholder="Subject Name" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" id="closeSubjectModal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Subject</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast hidden" id="toast">
+        <p class="toast-message"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
